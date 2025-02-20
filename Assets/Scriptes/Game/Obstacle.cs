@@ -15,6 +15,23 @@ public class Obstacle : MonoBehaviour
 
     public float widthPadding = 4f;
 
+    GameManager gameManager;
+
+    private void Start()
+    {
+        gameManager = GameManager.Instance;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Player player=collision.GetComponent<Player>();
+
+        if (player !=null)
+        {
+            gameManager.AddScore(1);
+        }
+    }
+
+
     public Vector3 SetRandomPlace(Vector3 lastPosition)
     {
         // y좌표를 RanDom 1~3만큼 만들고 틈은 고정지키면서 위 아래로 만들기 

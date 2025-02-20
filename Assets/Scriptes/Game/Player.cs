@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     bool isFlap = false;
 
     public bool godMode = false;
+    GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +24,7 @@ public class Player : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
 
-
+        gameManager = GameManager.Instance;
     }
 
     // 매 프레임마다 호출
@@ -74,4 +75,14 @@ public class Player : MonoBehaviour
         Debug.Log("Die");
 
     }
+
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    Obstacle obstacle = collision.gameObject.GetComponent<Obstacle>();
+    //    if (obstacle != null &&collision.CompareTag("Obstacle"))
+    //    {
+    //        gameManager.AddScore(1);
+    //    }
+    //}
+
 }
