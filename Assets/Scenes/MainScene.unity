@@ -500,6 +500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 535444248}
+  sceneName: MainScene
 --- !u!1 &535444247
 GameObject:
   m_ObjectHideFlags: 0

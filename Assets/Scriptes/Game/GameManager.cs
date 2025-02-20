@@ -11,35 +11,79 @@ public class GameManager : MonoBehaviour
 
     private int currentScore = 0;
 
+    public  bool Firstbool = false;
+    UiManager uiManager;
+    public UiManager UiManager { get { return uiManager; } }
     private void Awake()
     {
-        gameManager = this; // ¼ø¼­ÀÇ ¿À·ù°¡ ÀÖÀ»¼ö ÀÖ±â‹š¹®¿¡ awake¿¡¼­ »ı¼º / start¿¡¼­ ÀÎ½ºÅÏ½º »ç¿ë
+
+        gameManager = this;
+        uiManager = FindObjectOfType<UiManager>();
+
+        // ì”¬ ë¡œë“œ ì´ë²¤íŠ¸ ë“±ë¡
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+
+    // ì”¬ì´ ë¡œë“œë  ë•Œ í˜¸ì¶œë˜ëŠ” ë©”ì„œë“œ
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        //ì²˜ìŒ ë“¤ì˜¤ì˜¬ë•Œ // ì•„ë§ˆë„ ì”¬ì„ ë‹¤ì‹œë§Œë“¤ë©´ì„œ ì´ê²Œ ì´ˆê¸°í™” ë˜ê³  falseë¡œ ë˜ëŠ”ê²ƒì¼ ê²ƒì„ 
+        //ê·¸ë ‡ë‹¤ë©´ ì´ ê°’ì„ ì˜êµ¬ì ìœ¼ë¡œ ì €ì¥í•´ì„œ ë¶ˆëŸ¬ì˜¤ëŠ” ë°©ë²•ì´ ìˆì„ìˆ˜ ìˆê³  
+        //
+        if (!Firstbool) 
+        {
+            UiManager.SetRestart();
+            Time.timeScale = 0;
+            Debug.Log("Load Game Scene");
+        }
+        else //ê³„ì† REstartë¥¼ í• ë•Œ 
+        {
+
+        }
+        
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        UiManager.UpdateScore(0);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void GameOver()
     {
         Debug.Log("GameOver");
-
+        UiManager.SetRestart();
+        Time.timeScale = 0;
     }
     public void ReStartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name); //Áö±İ »ç¿ëÁßÀÎ ¾ÀÀ» º¸¿©ÁÜ 
+        Firstbool= true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Time.timeScale = 1;
+    }
+    public void GameStart()
+    {
+    }
+    public void ExitGame()
+    {
+        SceneManager.LoadScene("MainScene");
+        Time.timeScale = 1;
+        Firstbool = false;
     }
     public void AddScore(int score)
     {
         currentScore += score;
         Debug.Log($"Score {currentScore}");
+        UiManager.UpdateScore(currentScore);
     }
+
+
 }

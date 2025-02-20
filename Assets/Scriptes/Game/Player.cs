@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     public float flapForce = 6f;
     public float forwardSpeed = 3f;
     public bool isDead = false;
-    float deathCoolDown = 0f;
+    
 
     bool isFlap = false;
 
@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
 
         if (isDead) //Á×Àº°æ¿ì 
         {
-
+            
         }
         else //¾ÈÁ×Àº °æ¿ì 
         {
@@ -69,10 +69,11 @@ public class Player : MonoBehaviour
         if (isDead) return;
 
         isDead = true;
-        deathCoolDown = 1f;
+        
 
         animator.SetInteger("isDie", 1);
         Debug.Log("Die");
+        gameManager.GameOver();
 
     }
 

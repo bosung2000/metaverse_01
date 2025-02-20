@@ -35,7 +35,7 @@ public class CameraFollow : MonoBehaviour
         {
             desiredPosition = new Vector3(desiredPosition.x, transform.position.y, -10); // game
         }
-        else if (sceneName.Equals("SampleScene"))
+        else if (sceneName.Equals("MainScene"))
         {
             desiredPosition = new Vector3(desiredPosition.x, desiredPosition.y, -10); //map
         }

@@ -7,11 +7,13 @@ public class PlayerControllor : MonoBehaviour
     [SerializeField] private LayerMask ConllisionLayers;
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
+ 
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+   
     }
 
     // Update is called once per frame
@@ -37,6 +39,8 @@ public class PlayerControllor : MonoBehaviour
             // 게임 scenes을 만들고 거기씬으로 로드 해주면 됨 "Flappy_Bird"
             SceneManager.LoadScene("Flappy_Bird");
             Debug.Log("게임 입장");
+            //player의 중력을0?
+            
         }
     }
 }
