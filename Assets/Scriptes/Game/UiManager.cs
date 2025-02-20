@@ -18,8 +18,8 @@ public class UiManager : MonoBehaviour
     }
     void Start()
     {
-       // RestartBotton.gameObject.SetActive(false);
-        //Exit_Botton.gameObject.SetActive(false);
+        RestartBotton.gameObject.SetActive(false);
+        Exit_Botton.gameObject.SetActive(false);
     }
 
     // Update is called once per frame

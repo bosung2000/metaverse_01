@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
         uiManager = FindObjectOfType<UiManager>();
 
         // 씬 로드 이벤트 등록
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        //SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
 
@@ -31,16 +31,16 @@ public class GameManager : MonoBehaviour
         //처음 들오올때 // 아마도 씬을 다시만들면서 이게 초기화 되고 false로 되는것일 것임 
         //그렇다면 이 값을 영구적으로 저장해서 불러오는 방법이 있을수 있고 
         //
-        if (!Firstbool) 
-        {
-            UiManager.SetRestart();
-            Time.timeScale = 0;
-            Debug.Log("Load Game Scene");
-        }
-        else //계속 REstart를 할때 
-        {
+        //if (!Firstbool) 
+        //{
+        //    UiManager.SetRestart();
+        //    Time.timeScale = 0;
+        //    Debug.Log("Load Game Scene");
+        //}
+        //else //계속 REstart를 할때 
+        //{
 
-        }
+        //}
         
     }
 
@@ -61,13 +61,13 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("GameOver");
         UiManager.SetRestart();
-        Time.timeScale = 0;
+       // Time.timeScale = 0;
     }
     public void ReStartGame()
     {
-        Firstbool= true;
+        //Firstbool= true;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
     }
     public void GameStart()
     {
@@ -75,8 +75,8 @@ public class GameManager : MonoBehaviour
     public void ExitGame()
     {
         SceneManager.LoadScene("MainScene");
-        Time.timeScale = 1;
-        Firstbool = false;
+        //Time.timeScale = 1;
+        //Firstbool = false;
     }
     public void AddScore(int score)
     {
